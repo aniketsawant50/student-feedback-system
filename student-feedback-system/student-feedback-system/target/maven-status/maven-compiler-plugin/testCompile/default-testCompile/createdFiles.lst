@@ -1,0 +1,8 @@
+com\example\feedbacksystem\controller\AdminFeedbackController.class
+com\example\feedbacksystem\model\Feedback.class
+com\example\feedbacksystem\controller\FeedbackController.class
+com\example\feedbacksystem\repository\AdminRepository.class
+com\example\feedbacksystem\repository\FeedbackRepository.class
+com\example\feedbacksystem\controller\AdminController.class
+com\example\feedbacksystem\StudentFeedbackSystemApplication.class
+com\example\feedbacksystem\model\Admin.class

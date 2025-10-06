@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Feedback List</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            margin: 0; padding: 0; color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2575fc;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #2575fc;
+            color: white;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Submitted Feedbacks</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Student</th>
+                <th>Course</th>
+                <th>Faculty</th>
+                <th>Rating</th>
+                <th>Comments</th>
+            </tr>
+            <tr th:each="f : ${feedbackList}">
+                <td th:text="${f.id}"></td>
+                <td th:text="${f.studentName}"></td>
+                <td th:text="${f.courseName}"></td>
+                <td th:text="${f.facultyName}"></td>
+                <td th:text="${f.rating}"></td>
+                <td th:text="${f.comments}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">&copy; 2025 Student Feedback System</div>
+</body>
+</html>

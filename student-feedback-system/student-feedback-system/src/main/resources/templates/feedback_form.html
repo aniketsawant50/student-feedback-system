@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Feedback System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            margin: 0; padding: 0; color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2575fc;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="number"],
+        form textarea,
+        form select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        form input:focus,
+        form textarea:focus,
+        form select:focus {
+            border-color: #2575fc;
+            box-shadow: 0 0 5px rgba(37,117,252,0.5);
+            outline: none;
+        }
+
+        form button {
+            width: 100%;
+            padding: 15px;
+            background-color: #2575fc;
+            color: white;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #6a11cb;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Feedback System</h1>
+
+        <div th:if="${errorMessage}" class="error-message">
+            <p th:text="${errorMessage}"></p>
+        </div>
+
+        <form th:action="@{/submit}" th:object="${feedback}" method="post">
+            <label>Name</label>
+            <input type="text" th:field="*{studentName}" placeholder="Enter your name" required>
+
+            <label>Email</label>
+            <input type="email" th:field="*{email}" placeholder="Enter your email" required>
+
+            <label>Course</label>
+            <select th:field="*{courseName}" required>
+                <option value="" disabled selected>Select Course</option>
+                <option value="MCA">MCA</option>
+                <option value="MBA">MBA</option>
+            </select>
+
+            <label>Faculty</label>
+            <select th:field="*{facultyName}" required>
+                <option value="" disabled selected>Select Faculty</option>
+                <option value="Prof. Patil">Prof. Patil</option>
+                <option value="Prof. Kamble">Prof. Kamble</option>
+                <option value="Prof. Kathane">Prof. Kathane</option>
+                <option value="Prof. Ganeshar">Prof. Ganeshar</option>
+                <option value="Prof. Kulkarni">Prof. Kulkarni</option>
+                <option value="Prof. Pawar">Prof. Pawar</option>
+                <option value="Prof. Shinde">Prof. Shinde</option>
+                <option value="Prof. More">Prof. More</option>
+                <option value="Prof. Deshmukh">Prof. Deshmukh</option>
+                <option value="Prof. Jadhav">Prof. Jadhav</option>
+            </select>
+
+            <label>Rating (1-5)</label>
+            <input type="number" th:field="*{rating}" min="1" max="5" required>
+
+            <label>Comments</label>
+            <textarea th:field="*{comments}" placeholder="Your feedback"></textarea>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+
+    <div class="footer">&copy; 2025 Student Feedback System</div>
+</body>
+</html>
